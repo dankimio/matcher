@@ -4,9 +4,7 @@ class API::UsersController < API::APIController
   before_action :set_graph, only: [:authenticate_facebook]
 
   def index
-    # TODO: Optimize, load separately
     @users = User.near(current_user).recent.where.not(id: current_user)
-    @friend_requests = current_user.friend_requests.where(user: @users.ids).load
   end
 
   def show
