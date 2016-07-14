@@ -18,6 +18,7 @@
 #  latitude       :float
 #  longitude      :float
 #  checked_in_at  :datetime
+#  device_token   :string
 #
 
 class User < ApplicationRecord

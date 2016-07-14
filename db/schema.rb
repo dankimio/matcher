@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714132916) do
+ActiveRecord::Schema.define(version: 20160714140449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160714132916) do
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "checked_in_at"
+    t.string   "device_token"
     t.index ["api_token"], name: "index_users_on_api_token", unique: true, using: :btree
     t.index ["latitude", "longitude"], name: "index_users_on_latitude_and_longitude", using: :btree
   end
