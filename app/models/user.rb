@@ -26,6 +26,8 @@ class User < ApplicationRecord
   include Authenticable
   include Geocodable
 
+  has_many :reports, dependent: :destroy
+
   has_many :friendships, dependent: :destroy
   has_many :accepted_friendships,
            -> { Friendship.accepted },
