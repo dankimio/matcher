@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post 'authenticate_facebook', on: :collection
 
       resources :friendships, only: [:create]
+      resources :reports, only: [:create]
     end
   end
 end
