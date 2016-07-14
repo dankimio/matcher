@@ -25,4 +25,5 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates :birthday, presence: true
   validates :gender, inclusion: { in: %w(male female) }
+  validates :team, inclusion: { in: %w(instinct mystic valor) }
 end
