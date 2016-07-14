@@ -1,7 +1,7 @@
 json.array! @users do |user|
   json.partial! 'api/users/user', user: user
 
-  friend_request = current_user.friend_requests.find_by(friend: current_user)
+  friend_request = @friend_requests.find { |friend_request| friend_request.friend == current_user }
   json.matched friend_request.present?
 
   if friend_request
