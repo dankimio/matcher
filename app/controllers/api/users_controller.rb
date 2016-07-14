@@ -4,7 +4,8 @@ class API::UsersController < API::APIController
   before_action :set_graph, only: [:authenticate_facebook]
 
   def index
-    @users = User.near(current_user).recent
+    @users = User.near(current_user).recent.where.not(id: current_user)
+    @friendships = current_user.friend_requests.where(user: @users.ids)
   end
 
   def show
@@ -20,7 +21,7 @@ class API::UsersController < API::APIController
     if current_user.check_in(*check_in_params)
       head :ok
     else
-      render json: @user.errors
+      render json: current_user.errors, status: 422
     end
   end
 

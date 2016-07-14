@@ -48,6 +48,7 @@ class User < ApplicationRecord
   scope :recent, -> { where('checked_in_at > ?', 1.day.ago) }
 
   def check_in(latitude, longitude)
+    return false unless latitude.present? && longitude.present?
     update(latitude: latitude, longitude: longitude, checked_in_at: Time.zone.now)
   end
 
