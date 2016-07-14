@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :team
       t.string :bio
       t.string :api_token, null: false
-      t.integer :facebook_id
+      t.integer :facebook_id, limit: 8
       t.string :facebook_token
 
       t.timestamps

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160713230534) do
     t.string   "team"
     t.string   "bio"
     t.string   "api_token",      null: false
-    t.integer  "facebook_id"
+    t.bigint   "facebook_id"
     t.string   "facebook_token"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
