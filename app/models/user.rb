@@ -15,10 +15,16 @@
 #  facebook_token :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  latitude       :float
+#  longitude      :float
+#  checked_in_at  :datetime
 #
 
 class User < ApplicationRecord
+  SEARCH_DISTANCE = 20
+
   include Authenticable
+  include Geocodable
 
   has_secure_token :api_token
 
@@ -26,4 +32,16 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :gender, inclusion: { in: %w(male female) }
   validates :team, inclusion: { in: %w(instinct mystic valor) }, allow_nil: true
+
+  acts_as_mappable lat_column_name: :latitude, lng_column_name: :longitude
+
+  scope :near, -> (user) { within(SEARCH_DISTANCE, origin: user.to_location) }
+
+  def check_in(latitude, longitude)
+    update(latitude: latitude, longitude: longitude, checked_in_at: Time.zone.now)
+  end
+
+  def to_location
+    [latitude, longitude]
+  end
 end
