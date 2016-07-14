@@ -30,9 +30,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Facebook Graph API
 gem 'koala'
-
 # Geolocation
 gem 'geokit-rails'
+# Apple Push Notifications
+gem 'houston'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
