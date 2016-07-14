@@ -5,7 +5,7 @@
 #  id             :integer          not null, primary key
 #  first_name     :string           not null
 #  last_name      :string           not null
-#  birthday       :date             not null
+#  birthdate      :date             not null
 #  avatar         :string
 #  gender         :string           not null
 #  team           :string
@@ -25,7 +25,7 @@
 foo:
   first_name: Foo
   last_name: Bar
-  birthday: 1970-01-01
+  birthdate: 1970-01-01
   avatar: Avatar
   gender: male
   team: valor
@@ -37,7 +37,7 @@ foo:
 baz:
   first_name: Baz
   last_name: Qux
-  birthday: 1970-01-01
+  birthdate: 1970-01-01
   avatar: Avatar
   gender: female
   team: instinct

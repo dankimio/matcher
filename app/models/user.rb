@@ -5,7 +5,7 @@
 #  id             :integer          not null, primary key
 #  first_name     :string           not null
 #  last_name      :string           not null
-#  birthday       :date             not null
+#  birthdate      :date             not null
 #  avatar         :string
 #  gender         :string           not null
 #  team           :string
@@ -50,7 +50,7 @@ class User < ApplicationRecord
   has_secure_token :api_token
 
   validates :first_name, :last_name, presence: true
-  validates :birthday, presence: true
+  validates :birthdate, presence: true, on: :update
   validates :gender, inclusion: { in: %w(male female) }
   validates :team, inclusion: { in: %w(instinct mystic valor) }, allow_nil: true
 

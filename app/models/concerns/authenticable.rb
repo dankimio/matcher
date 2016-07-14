@@ -1,7 +1,7 @@
 module Authenticable
   extend ActiveSupport::Concern
 
-  FACEBOOK_FIELDS = ['id', 'first_name', 'last_name', 'gender', 'birthday', 'picture.type(large)']
+  FACEBOOK_FIELDS = ['id', 'first_name', 'last_name', 'gender', 'picture.type(large)']
 
   module ClassMethods
     def find_or_initialize_by_facebook(graph)
@@ -10,16 +10,9 @@ module Authenticable
 
       user || new(
         first_name: facebook_user['first_name'], last_name: facebook_user['last_name'],
-        gender: facebook_user['gender'], facebook_id: facebook_user['id'],
-        birthday: format_facebook_birthday(facebook_user['birthday'])
+        gender: facebook_user['gender'], facebook_id: facebook_user['id']
         # remote_avatar_url: facebook_user.dig('picture', 'data', 'url').to_s
       )
-    end
-
-    def format_facebook_birthday(birthday)
-      Date.strptime(birthday, '%m/%d/%Y')
-    rescue ArgumentError
-      nil
     end
   end
 end
