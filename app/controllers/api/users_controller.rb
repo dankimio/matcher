@@ -1,10 +1,13 @@
 class API::UsersController < API::APIController
   skip_before_action :restrict_access!, only: [:authenticate_facebook]
-  before_action :set_user, only: [:update]
+  before_action :set_user, only: [:show, :update]
   before_action :set_graph, only: [:authenticate_facebook]
 
   def index
     @users = User.near(current_user).recent
+  end
+
+  def show
   end
 
   def create
@@ -36,7 +39,7 @@ class API::UsersController < API::APIController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def set_graph
