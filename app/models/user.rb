@@ -26,8 +26,11 @@ class User < ApplicationRecord
   include Authenticable
   include Geocodable
 
-  has_many :friendships, -> { Friendship.accepted }, dependent: :destroy
-  has_many :friends, through: :friendships, source: :friend
+  has_many :friendships, dependent: :destroy
+  has_many :accepted_friendships,
+           -> { Friendship.accepted },
+           class_name: 'Friendship', dependent: :destroy
+  has_many :friends, through: :accepted_friendships, source: :friend
   has_many :friend_requests,
            -> { Friendship.unaccepted },
            class_name: 'Friendship', foreign_key: :friend_id

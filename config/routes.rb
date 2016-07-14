@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
     resources :users, only: [:index, :create, :update] do
       post 'authenticate_facebook', on: :collection
+
+      resources :friendships, only: [:create]
     end
   end
 end

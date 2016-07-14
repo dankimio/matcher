@@ -24,7 +24,8 @@ class Friendship < ApplicationRecord
 
   # Create inverse relationship when accepted
   def accept
-    friend.friendships.create(friend: user)
+    update(accepted: true)
+    friend.accepted_friendships.create(friend: user)
   end
 
   private
