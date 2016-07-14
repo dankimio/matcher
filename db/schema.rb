@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714140449) do
+ActiveRecord::Schema.define(version: 20160714145123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,22 +34,23 @@ ActiveRecord::Schema.define(version: 20160714140449) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",     null: false
-    t.string   "last_name",      null: false
-    t.date     "birthday",       null: false
+    t.string   "first_name",                     null: false
+    t.string   "last_name",                      null: false
+    t.date     "birthday",                       null: false
     t.string   "avatar"
-    t.string   "gender",         null: false
+    t.string   "gender",                         null: false
     t.string   "team"
     t.string   "bio"
-    t.string   "api_token",      null: false
+    t.string   "api_token",                      null: false
     t.bigint   "facebook_id"
     t.string   "facebook_token"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "checked_in_at"
     t.string   "device_token"
+    t.boolean  "master",         default: false
     t.index ["api_token"], name: "index_users_on_api_token", unique: true, using: :btree
     t.index ["latitude", "longitude"], name: "index_users_on_latitude_and_longitude", using: :btree
   end

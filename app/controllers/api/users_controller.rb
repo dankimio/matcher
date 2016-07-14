@@ -53,7 +53,7 @@ class API::UsersController < API::APIController
   end
 
   def user_params
-    params.require(:user).permit(:device_token, :bio, :team)
+    params.require(:user).permit(:device_token, :bio, :team, :master)
   end
 
   def check_in_params

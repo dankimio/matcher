@@ -19,6 +19,7 @@
 #  longitude      :float
 #  checked_in_at  :datetime
 #  device_token   :string
+#  master         :boolean          default(FALSE)
 #
 
 require 'test_helper'
