@@ -1,0 +1,42 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id             :integer          not null, primary key
+#  first_name     :string           not null
+#  last_name      :string           not null
+#  birthday       :date             not null
+#  avatar         :string
+#  gender         :string           not null
+#  team           :string
+#  bio            :string
+#  api_token      :string           not null
+#  facebook_id    :integer
+#  facebook_token :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+foo:
+  first_name: Foo
+  last_name: Bar
+  birthday: 1970-01-01
+  avatar: Avatar
+  gender: male
+  team: valor
+  bio: Bio
+  api_token: foo_token
+  facebook_id: 1
+  facebook_token: facebook_token
+
+baz:
+  first_name: Baz
+  last_name: Qux
+  birthday: 1970-01-01
+  avatar: Avatar
+  gender: female
+  team: instinct
+  bio: Bio
+  api_token: bar_token
+  facebook_id: 2
+  facebook_token: facebook_token
