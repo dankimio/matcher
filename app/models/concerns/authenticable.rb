@@ -11,9 +11,15 @@ module Authenticable
       user || new(
         first_name: facebook_user['first_name'], last_name: facebook_user['last_name'],
         gender: facebook_user['gender'], facebook_id: facebook_user['id'],
-        birthday: Date.strptime(facebook_user['birthday'], '%m/%d/%Y')
+        birthday: format_facebook_birthday(facebook_user['birthday'])
         # remote_avatar_url: facebook_user.dig('picture', 'data', 'url').to_s
       )
+    end
+
+    def format_facebook_birthday(birthday)
+      Date.strptime(birthday, '%m/%d/%Y')
+    rescue ArgumentError
+      nil
     end
   end
 end
