@@ -2,6 +2,10 @@ class API::FriendshipsController < API::APIController
   before_action :set_user, only: [:create]
   before_action :set_friend_request, only: [:create]
 
+  def index
+    @friendships = current_user.accepted_friendships.order(updated_at: :desc)
+  end
+
   def create
     @friendship = if @friend_request.present?
                     @friend_request.accept

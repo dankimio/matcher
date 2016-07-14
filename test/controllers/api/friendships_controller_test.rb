@@ -5,6 +5,11 @@ class API::FriendshipsControllerTest < ActionDispatch::IntegrationTest
     @friendship = friendships(:friendship)
   end
 
+  test 'should get index' do
+    get api_friendships_path(api_token: api_token)
+    assert_response :success
+  end
+
   test 'should create friendship' do
     @friendship.destroy
 
