@@ -15,6 +15,11 @@ class API::UsersController < API::APIController
   end
 
   def update
+    if @user.update(user_params)
+      head :ok
+    else
+      render json: @user.errors, status: 422
+    end
   end
 
   def check_in
@@ -45,6 +50,10 @@ class API::UsersController < API::APIController
 
   def set_graph
     @graph = Koala::Facebook::API.new(params[:access_token])
+  end
+
+  def user_params
+    params.require(:user).permit(:device_token, :bio, :team)
   end
 
   def check_in_params
