@@ -36,6 +36,7 @@ class User < ApplicationRecord
   acts_as_mappable lat_column_name: :latitude, lng_column_name: :longitude
 
   scope :near, -> (user) { within(SEARCH_DISTANCE, origin: user.to_location) }
+  scope :recent, -> { where('checked_in_at > ?', 1.day.ago) }
 
   def check_in(latitude, longitude)
     update(latitude: latitude, longitude: longitude, checked_in_at: Time.zone.now)

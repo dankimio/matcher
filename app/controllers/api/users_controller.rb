@@ -4,13 +4,21 @@ class API::UsersController < API::APIController
   before_action :set_graph, only: [:authenticate_facebook]
 
   def index
-    @users = User.all
+    @users = User.near(current_user).recent
   end
 
   def create
   end
 
   def update
+  end
+
+  def check_in
+    if current_user.check_in(*check_in_params)
+      head :ok
+    else
+      render json: @user.errors
+    end
   end
 
   def authenticate_facebook
@@ -33,5 +41,9 @@ class API::UsersController < API::APIController
 
   def set_graph
     @graph = Koala::Facebook::API.new(params[:access_token])
+  end
+
+  def check_in_params
+    [params[:latitude], params[:longitude]]
   end
 end
