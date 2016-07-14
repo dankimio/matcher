@@ -1,16 +1,16 @@
 # == Schema Information
 #
-# Table name: friendships
+# Table name: messages
 #
 #  id         :integer          not null, primary key
+#  content    :string
 #  user_id    :integer
 #  friend_id  :integer
-#  accepted   :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-friendship:
+message:
+  content: Content
   user: foo
   friend: baz
-  accepted: true

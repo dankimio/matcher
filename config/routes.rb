@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       resources :reports, only: [:create]
     end
 
+    resources :friends, only: [] do
+      resources :messages, only: [:index, :create]
+    end
+
     resources :friendships, only: [:index]
   end
 end

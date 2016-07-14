@@ -31,7 +31,7 @@ class FriendshipTest < ActiveSupport::TestCase
     assert @friendship.invalid?
   end
 
-  test 'creates and destroys inverse relation ship' do
+  test 'creates and destroys inverse relationship' do
     friendship = @friendship.dup
     @friendship.destroy
 

@@ -30,6 +30,11 @@ class User < ApplicationRecord
 
   has_many :reports, dependent: :destroy
 
+  has_many :outgoing_messages,
+           dependent: :destroy, class_name: 'Message'
+  has_many :incoming_messages,
+           dependent: :destroy, class_name: 'Message', foreign_key: :friend
+
   has_many :friendships, dependent: :destroy
   has_many :accepted_friendships,
            -> { Friendship.accepted },
