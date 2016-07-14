@@ -10,7 +10,8 @@ module Authenticable
 
       user || new(
         first_name: facebook_user['first_name'], last_name: facebook_user['last_name'],
-        gender: facebook_user['gender'], facebook_id: facebook_user['id']
+        gender: facebook_user['gender'], facebook_id: facebook_user['id'],
+        birthday: Date.strptime(facebook_user['birthday'], '%m/%d/%Y')
         # remote_avatar_url: facebook_user.dig('picture', 'data', 'url').to_s
       )
     end
