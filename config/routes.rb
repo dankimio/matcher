@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     end
 
     resources :friendships, only: [:index]
+    resources :rejections, only: [:create]
   end
 end

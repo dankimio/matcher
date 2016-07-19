@@ -14,4 +14,11 @@ class Rejection < ApplicationRecord
   belongs_to :friend, class_name: 'User'
 
   validates :friend, uniqueness: { scope: :user }
+  validate :not_self
+
+  private
+
+  def not_self
+    errors.add(:friend, "can't be self") if user == friend
+  end
 end
