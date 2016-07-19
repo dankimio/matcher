@@ -42,7 +42,7 @@ class User < ApplicationRecord
   has_many :friends, through: :accepted_friendships, source: :friend
   has_many :friend_requests,
            -> { Friendship.unaccepted },
-           class_name: 'Friendship', foreign_key: :friend_id
+           class_name: 'Friendship', foreign_key: :friend_id, dependent: :destroy
   has_many :pending_friends,
            through: :friend_requests,
            class_name: 'User', source: :user
