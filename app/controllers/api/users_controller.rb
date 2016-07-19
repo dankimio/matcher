@@ -32,7 +32,7 @@ class API::UsersController < API::APIController
   def authenticate_facebook
     @user = User.find_or_initialize_by_facebook(@graph)
 
-    if @user.save
+    if (@user.new_record? && @user.save) || (@user && @user.persisted?)
       render :create, status: :created
     else
       render json: @user.errors, status: 422
