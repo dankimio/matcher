@@ -66,6 +66,8 @@ class User < ApplicationRecord
   scope :near, -> (user) { within(SEARCH_DISTANCE, origin: user.to_location) }
   scope :recent, -> { where('checked_in_at > ?', 1.day.ago) }
 
+  mount_uploader :avatar, AvatarUploader
+
   def check_in(latitude, longitude)
     return false unless latitude.present? && longitude.present?
     update(latitude: latitude, longitude: longitude, checked_in_at: Time.zone.now)
