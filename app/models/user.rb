@@ -47,6 +47,11 @@ class User < ApplicationRecord
            through: :friend_requests,
            class_name: 'User', source: :user
 
+  has_many :rejections, dependent: :destroy
+  has_many :rejected_users,
+           through: :rejections,
+           class_name: 'User', source: :friend
+
   has_secure_token :api_token
 
   validates :first_name, :last_name, presence: true
