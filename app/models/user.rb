@@ -33,7 +33,7 @@ class User < ApplicationRecord
   has_many :outgoing_messages,
            dependent: :destroy, class_name: 'Message'
   has_many :incoming_messages,
-           dependent: :destroy, class_name: 'Message', foreign_key: :friend
+           dependent: :destroy, class_name: 'Message', foreign_key: :friend_id
 
   has_many :friendships, dependent: :destroy
   has_many :accepted_friendships,
@@ -51,6 +51,8 @@ class User < ApplicationRecord
   has_many :rejected_users,
            through: :rejections,
            class_name: 'User', source: :friend
+  has_many :inverse_rejections,
+           class_name: 'Rejection', foreign_key: :friend_id, dependent: :destroy
 
   has_secure_token :api_token
 
