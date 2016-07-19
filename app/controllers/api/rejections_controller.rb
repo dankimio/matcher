@@ -7,6 +7,7 @@ class API::RejectionsController < API::APIController
   private
 
   def rejections_params
+    params.require(:rejections)
     params.permit(rejections: [:friend_id])
   end
 end
