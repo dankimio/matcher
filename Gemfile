@@ -34,6 +34,14 @@ gem 'koala'
 gem 'geokit-rails'
 # Apple Push Notifications
 gem 'houston'
+# Attachments
+gem 'carrierwave'
+# Image processing
+gem 'mini_magick'
+
+group :production do
+  gem 'fog-aws'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
