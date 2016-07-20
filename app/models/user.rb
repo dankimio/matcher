@@ -36,6 +36,8 @@ class User < ApplicationRecord
            dependent: :destroy, class_name: 'Message', foreign_key: :friend_id
 
   has_many :friendships, dependent: :destroy
+  has_many :liked_users,
+           through: :friendships, class_name: 'User', source: :friend
   has_many :accepted_friendships,
            -> { Friendship.accepted },
            class_name: 'Friendship', dependent: :destroy
@@ -78,6 +80,6 @@ class User < ApplicationRecord
   end
 
   def swiped_users
-    User.where(id: pending_friends).or(User.where(id: rejected_users))
+    User.where(id: liked_users).or(User.where(id: rejected_users))
   end
 end
