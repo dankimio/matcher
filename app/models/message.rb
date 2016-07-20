@@ -11,6 +11,8 @@
 #
 
 class Message < ApplicationRecord
+  after_create :notify
+
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
@@ -26,5 +28,9 @@ class Message < ApplicationRecord
 
   def not_self
     errors.add(:friend, "can't be self") if user == friend
+  end
+
+  def notify
+    Notifier.new(friend, 'You have a new message!')
   end
 end

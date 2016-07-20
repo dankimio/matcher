@@ -25,6 +25,10 @@ class Friendship < ApplicationRecord
   # Create inverse relationship when accepted
   def accept
     update(accepted: true)
+
+    Notifier.new(user, 'You have a new match!')
+
+    # Return new friendship
     friend.accepted_friendships.create(friend: user)
   end
 
