@@ -33,7 +33,7 @@ gem 'koala'
 # Geolocation
 gem 'geokit-rails'
 # Apple Push Notifications
-gem 'houston'
+gem 'houston', github: 'nomad/houston'
 # Attachments
 gem 'carrierwave'
 # Image processing
