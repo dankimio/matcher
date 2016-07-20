@@ -9,7 +9,6 @@ class API::FriendshipsController < API::APIController
   def create
     @friendship = if @friend_request.present?
                     @friend_request.accept
-                    @friend_request
                   else
                     current_user.friendships.build(friend: @user)
                   end
