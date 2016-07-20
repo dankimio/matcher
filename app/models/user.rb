@@ -38,6 +38,8 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :liked_users,
            through: :friendships, class_name: 'User', source: :friend
+  has_many :inverse_friendships,
+           class_name: 'Friendship', foreign_key: :friend_id, dependent: :destroy
   has_many :accepted_friendships,
            -> { Friendship.accepted },
            class_name: 'Friendship', dependent: :destroy
