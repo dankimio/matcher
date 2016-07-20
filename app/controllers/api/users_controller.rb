@@ -4,7 +4,11 @@ class API::UsersController < API::APIController
   before_action :set_graph, only: [:authenticate_facebook]
 
   def index
-    @users = User.near(current_user).recent.where.not(id: current_user).limit(25)
+    @users = User.near(current_user)
+      .recent
+      .where.not(id: current_user)
+      .where.not(id: current_user.swiped_users)
+      .limit(25)
   end
 
   def show

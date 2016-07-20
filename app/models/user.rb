@@ -76,4 +76,8 @@ class User < ApplicationRecord
   def to_location
     [latitude, longitude]
   end
+
+  def swiped_users
+    User.where(id: friends).or(User.where(id: rejected_users))
+  end
 end
