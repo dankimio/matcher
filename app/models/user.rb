@@ -78,6 +78,6 @@ class User < ApplicationRecord
   end
 
   def swiped_users
-    User.where(id: friends).or(User.where(id: rejected_users))
+    User.where(id: pending_friends).or(User.where(id: rejected_users))
   end
 end
