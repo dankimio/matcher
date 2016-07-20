@@ -1,4 +1,4 @@
-class API::ReportsController < ApplicationController
+class API::ReportsController < API::APIController
   before_action :set_user, only: [:create]
 
   def create
