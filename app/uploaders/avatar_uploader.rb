@@ -1,3 +1,3 @@
 class AvatarUploader < ApplicationUploader
-  process resize_to_fit: [500, 500]
+  process resize_to_fit: [750, 750]
 end
