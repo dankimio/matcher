@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'privacy-policy', to: 'pages#privacy_policy'
   namespace :api do
     resource :user, only: [:show, :update] do
       post 'check_in'
