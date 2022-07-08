@@ -1,6 +1,6 @@
 class API::UsersController < API::APIController
   skip_before_action :restrict_access!, only: [:authenticate_facebook]
-  before_action :set_user, only: [:show, :update]
+  before_action :set_user, only: %i[show update]
   before_action :set_graph, only: [:authenticate_facebook]
 
   def index
@@ -35,7 +35,7 @@ class API::UsersController < API::APIController
   def authenticate_facebook
     @user = User.find_or_initialize_by_facebook(@graph)
 
-    if (@user.new_record? && @user.save) || (@user && @user.persisted?)
+    if (@user&.new_record? && @user&.save) || @user&.persisted?
       render :create, status: :created
     else
       render json: @user.errors, status: 422

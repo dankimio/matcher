@@ -1,7 +1,7 @@
 module Authenticable
   extend ActiveSupport::Concern
 
-  FACEBOOK_FIELDS = ['id', 'first_name', 'last_name', 'gender', 'picture.type(large)']
+  FACEBOOK_FIELDS = ['id', 'first_name', 'last_name', 'gender', 'picture.type(large)'].freeze
 
   module ClassMethods
     def find_or_initialize_by_facebook(graph)
