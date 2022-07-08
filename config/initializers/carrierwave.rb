@@ -1,8 +1,6 @@
 CarrierWave.configure do |config|
   # Use local storage in development and test environment
-  if Rails.env.development? || Rails.env.test?
-    config.storage = :file
-  end
+  config.storage = :file if Rails.env.development? || Rails.env.test?
 
   # Use AWS storage if in production
   if Rails.env.production?
