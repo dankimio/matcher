@@ -1,24 +1,9 @@
-# README
+# Matcher
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A backend for Matcher, an app to connect with people around you.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby version: see `.ruby-version`
+- System dependencies: `$ brew install imagemagick postgresql`
+- Configuration: see `config/secrets.yml`
+- Database initialization: `$ rake db:setup`
+- How to run the test suite: `$ rake test`
