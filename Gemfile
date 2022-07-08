@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '~> 2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 1.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -29,18 +29,18 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Facebook Graph API
-gem 'koala'
+gem 'koala', '~> 2.4'
 # Geolocation
-gem 'geokit-rails'
+gem 'geokit-rails', '~> 2.1'
 # Apple Push Notifications
-gem 'houston', github: 'nomad/houston'
+gem 'houston', '~> 2.2'
 # Attachments
-gem 'carrierwave'
+gem 'carrierwave', '~> 0.11.2'
 # Image processing
-gem 'mini_magick'
+gem 'mini_magick', '~> 4.5'
 
 group :production do
-  gem 'fog-aws'
+  gem 'fog-aws', '~> 0.10.0'
 end
 
 group :development, :test do
